@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, MessageCircle, ArrowRight } from 'lucide-react';
 import { mockCompanyInfo } from '../mock';
+// change #1
+import { useForm, ValidationError } from '@formspree/react';
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +17,8 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLiveChatOpen, setIsLiveChatOpen] = useState(false);
+  // change #2
+  const [state, handleFormSubmit] = useForm("mwpylyld"); 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,24 +27,30 @@ const Contact = () => {
       [name]: value
     }));
   };
+ //change this
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
+    //to this 
+    const handleSubmit = (e) => {
+  e.preventDefault();
+  handleFormSubmit(e);  // Formspree submission
+
+    // Instead of this also
     // Mock form submission
-    setTimeout(() => {
-      alert('Thank you for your inquiry! We will contact you within 24 hours.');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        message: ''
-      });
-      setIsSubmitting(false);
-    }, 1500);
+  //   setTimeout(() => {
+  //     alert('Thank you for your inquiry! We will contact you within 24 hours.');
+  //     setFormData({
+  //       name: '',
+  //       email: '',
+  //       phone: '',
+  //       company: '',
+  //       service: '',
+  //       message: ''
+  //     });
+  //     setIsSubmitting(false);
+  //   }, 1500);
   };
 
   const toggleLiveChat = () => {
@@ -146,6 +157,13 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="bg-gray-900/50 p-8 border border-gray-800">
             <h3 className="heading-1 mb-8">Request a Quote</h3>
+            {/* success message */}
+              {/* Success message */}
+  {state.succeeded && (
+    <p className="text-green-500 mb-4">
+      Thank you! Your request has been sent successfully.
+    </p>
+  )}
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -159,6 +177,8 @@ const Contact = () => {
                     className="w-full bg-black/50 border border-gray-700 px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors"
                     placeholder="Enter your full name"
                   />
+                   <ValidationError prefix="Name" field="name" errors={state.errors} />
+
                 </div>
                 <div>
                   <label className="block body-small text-gray-300 mb-2">Email Address *</label>
@@ -171,6 +191,8 @@ const Contact = () => {
                     className="w-full bg-black/50 border border-gray-700 px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors"
                     placeholder="your.email@company.com"
                   />
+                   <ValidationError prefix="Email" field="email" errors={state.errors} />
+
                 </div>
               </div>
 
@@ -185,6 +207,7 @@ const Contact = () => {
                     className="w-full bg-black/50 border border-gray-700 px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors"
                     placeholder="+966 XX XXX XXXX"
                   />
+                  <ValidationError prefix="Phone" field="phone" errors={state.errors} />
                 </div>
                 <div>
                   <label className="block body-small text-gray-300 mb-2">Company Name</label>
@@ -196,6 +219,7 @@ const Contact = () => {
                     className="w-full bg-black/50 border border-gray-700 px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors"
                     placeholder="Your company name"
                   />
+                  <ValidationError prefix="Company" field="company" errors={state.errors} />
                 </div>
               </div>
 
@@ -228,19 +252,31 @@ const Contact = () => {
                   className="w-full bg-black/50 border border-gray-700 px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition-colors resize-none"
                   placeholder="Tell us about your IT infrastructure needs, current setup, and project requirements..."
                 ></textarea>
+                <ValidationError prefix="Message" field="message" errors={state.errors} />
               </div>
-
-              <button 
+{/* instead of this: button */}
+              {/* <button 
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full btn-primary justify-center group"
               >
                 {isSubmitting ? 'Sending Request...' : 'Send Request'}
                 <Send size={20} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </button> */}
+              {/* Use this */}
+              <button 
+             type="submit"
+              disabled={state.submitting}
+            className="w-full btn-primary justify-center group"
+>
+  {state.submitting ? 'Sending Request...' : 'Send Request'}
+  <Send size={20} className="group-hover:translate-x-1 transition-transform" />
+</button>
             </form>
           </div>
         </div>
+          
+          
 
         {/* Live Chat Widget */}
         {isLiveChatOpen && (
