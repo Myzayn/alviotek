@@ -61,7 +61,7 @@ const Hero = () => {
                 className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
               >
                 <Mail size={18} />
-                <span className="body-small">zain@alviotek.com</span>
+                <span className="body-small">alviotek@gmail.com</span>
               </a>
             </div>
           </div>
