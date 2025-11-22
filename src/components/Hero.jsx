@@ -54,10 +54,10 @@ const Hero = () => {
                 className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
               >
                 <Phone size={18} />
-                <span className="body-small">0567894358</span>
+                <span className="body-small">0542108149</span>
               </a>
               <a 
-                href="mailto:zain@eutech.com" 
+                href="mailto:alviotek@gmail.com" 
                 className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
               >
                 <Mail size={18} />

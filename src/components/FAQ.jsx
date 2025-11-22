@@ -80,7 +80,7 @@ const FAQ = () => {
               Call Us: 054 210 8149
             </a>
             <a 
-              href="mailto:zain@eutech.com"
+              href="mailto:alviotek@gmail.com"
               className="btn-secondary dark-button-animate"
             >
               Email Support
