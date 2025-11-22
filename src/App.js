@@ -28,10 +28,10 @@ const Footer = () => {
             </p>
             <div className="space-y-2">
               <a href="tel:0567894358" className="block body-small text-gray-400 hover:text-white transition-colors">
-                📞 0567894358
+                📞 0542108149
               </a>
               <a href="mailto:zain@eutech.com" className="block body-small text-gray-400 hover:text-white transition-colors">
-                ✉️ zain@alviotek.com
+                ✉️ alviotek@gmail.com
               </a>
             </div>
           </div>
