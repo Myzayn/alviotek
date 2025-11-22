@@ -4,8 +4,8 @@ export const mockCompanyInfo = {
   name: "alviotek",
   tagline: "From zero to full ready IT infrastructure solution",
   description: "Leading IT support company in Saudi Arabia providing comprehensive technology solutions",
-  phone: "0567894358",
-  email: "zain@alviotek.com", 
+  phone: "0542108149",
+  email: "alviotek@gmail.com", 
   address: "alviotek HQ king faisal tower central riyadh sa"
 };
 
@@ -46,7 +46,7 @@ export const mockTestimonials = [
     name: "Ahmed Al-Rashid", 
     company: "Riyadh Tech Solutions",
     role: "IT Manager",
-    content: "Euro-tech.sa transformed our entire IT infrastructure. Their networking solutions are top-notch and the team is incredibly professional.",
+    content: "alviotek transformed our entire IT infrastructure. Their networking solutions are top-notch and the team is incredibly professional.",
     rating: 5
   },
   {

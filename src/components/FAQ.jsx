@@ -77,7 +77,7 @@ const FAQ = () => {
               href="tel:0567894358"
               className="btn-primary dark-button-animate"
             >
-              Call Us: 0567894358
+              Call Us: 054 210 8149
             </a>
             <a 
               href="mailto:zain@eutech.com"
